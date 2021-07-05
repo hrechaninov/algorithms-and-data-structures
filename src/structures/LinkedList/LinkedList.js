@@ -94,4 +94,12 @@ export default class LinkedList{
 		}
 		return nodeToDelete;
 	}
+	forEach(callback){
+		let currentNode = this.head;
+
+		while(currentNode){
+			callback(currentNode);
+			currentNode = currentNode.next;
+		}
+	}
 }

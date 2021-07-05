@@ -100,3 +100,17 @@ test("should find a node by its value and delete it", () => {
 	expect(list.delete("4")).toBeNull();
 	expect(list.toArray()).toEqual(["1", "2", "3"]);
 });
+
+test("should call provided callback with each node", () => {
+	const list = new LinkedList();
+	const callback = jest.fn(node => node);
+
+	list.append("1")
+		.append("2")
+		.append("3");
+	list.forEach(callback);
+	expect(callback).toBeCalledTimes(3);
+	expect(callback.mock.results[0].value.value).toBe("1");
+	expect(callback.mock.results[1].value.value).toBe("2");
+	expect(callback.mock.results[2].value.value).toBe("3");
+});
