@@ -114,3 +114,15 @@ test("should call provided callback with each node", () => {
 	expect(callback.mock.results[1].value.value).toBe("2");
 	expect(callback.mock.results[2].value.value).toBe("3");
 });
+
+test("Checks list`s length", () => {
+	const list = new LinkedList();
+	expect(list.length).toBe(0);
+	list.append(1);
+	list.append(2);
+	list.append(3);
+	expect(list.length).toBe(3);
+	list.delete(1);
+	list.delete(10);
+	expect(list.length).toBe(2);
+});

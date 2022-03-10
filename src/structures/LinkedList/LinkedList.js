@@ -4,6 +4,7 @@ export default class LinkedList{
 	constructor(){
 		this.head = null;
 		this.tail = null;
+		this.length = 0;
 	}
 	append(value){
 		const nodeToAppend = new Node(value);
@@ -17,6 +18,7 @@ export default class LinkedList{
 			this.tail = nodeToAppend;
 		}
 
+		this.length++;
 		return this;
 	}
 	prepend(value){
@@ -29,6 +31,8 @@ export default class LinkedList{
 			nodeToPrepend.next = this.head;
 			this.head = nodeToPrepend;
 		}
+
+		this.length++;
 		return this;
 	}
 	toArray(){
@@ -76,6 +80,7 @@ export default class LinkedList{
 
 		while(currentNode){
 			if(currentNode.value === value){
+				this.length--;
 				nodeToDelete = currentNode;
 				if(currentNode === this.head){
 					this.head = currentNode.next;
